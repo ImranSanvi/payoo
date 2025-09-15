@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- daisy -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+
     <!-- tailwind CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <title>payoo Mobile App</title>
 </head>
-<body>
+<body class="bg-[#f4f5f7] h-[100vh] flex flex-col justify-center items-center">
+
+    <div class="h-[133px] w-[402px] bg-[url(./assets/bg.png)] bg-cover flex justify-center items-center">
+        <img src="./assets/Group.png" alt="">
+    </div>
     
+    <form class="bg-white rounded-2xl p-7 w-[402px]">
+        <div>
+            <label for="" class="font-semibold">Mobile Number</label><br/>
+            <input type="text" placeholder="Enter Your Number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" /><br/>
+        </div>
+        <div class="mt-5">
+            <label for="" class="font-semibold">4DigitPin</label><br/>
+            <input type="text" placeholder="Enter 4DigitPin" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" /><br/>
+        </div>
+        <button class="btn btn-active bg-[#0874F2] mt-5 w-full rounded-3xl text-white">Login</button>
+    </form>
 </body>
 </html>
