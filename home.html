@@ -15,7 +15,7 @@
 
     <title>Home page</title>
 </head>
-<body class="bg-[#f4f5f7] h-[100vh] ">
+<body class="bg-[#f4f5f7] min-h-screen">
 
     <div class="max-w-lg mx-auto bg-white rounded-b-xl">
         <div class="flex justify-between items-center border-b-1 border-gray-400 p-4">
@@ -38,12 +38,12 @@
         </div>
 
         <div class="grid grid-cols-3 gap-8 p-8">
-            <div class="w-[130px] h-[90px] border-2 border-gray-300 flex flex-col items-center justify-center rounded-2xl p-2">
+            <div id="add-money" class="w-[130px] h-[90px] border-2 border-gray-300 flex flex-col items-center justify-center rounded-2xl p-2">
                 <img src="./assets/wallet1.png" alt="">
                 <h2 class=" font-medium text-[14px] text-[#080808]/70">Add Money</h2>
             </div>
 
-            <div class="w-[130px] h-[90px] border-2 border-gray-300 flex flex-col items-center justify-center rounded-2xl p-2">
+            <div id="cashout-money" class="w-[130px] h-[90px] border-2 border-gray-300 flex flex-col items-center justify-center rounded-2xl p-2">
                 <img src="./assets/send1.png" alt="">
                 <h2 class=" font-medium text-[14px] text-[#080808]/70">Cashout</h2>
             </div>
@@ -71,7 +71,8 @@
     </div>
 
     <div class="all-form-section max-w-lg mx-auto mt-8">
-        <div>
+        <!-- add Money section -->
+        <div id="add-money-parent">
             <h1 class="font-semibold text-[18px] text-[#080808]/90">Add Money</h1>
             <form class="bg-white rounded-2xl p-7 mt-4">
                 <div>
@@ -101,6 +102,29 @@
                 <button id="add-money-btn" class="btn btn-active bg-[#0874F2] mt-5 w-full rounded-3xl text-white" id="login-btn">Add Money</button>
             </form>
         </div>
+        
+        <!-- cashout section -->
+         <div id="cashout-parent" class="mt-8" style="display: none;">
+            <h1 class="font-semibold text-[18px] text-[#080808]/90">Cash Out</h1>
+            <form class="bg-white rounded-2xl p-7 mt-4">
+
+                <div>
+                    <label for="" class="font-medium text-[16px] text-[#080808]/70">Agent Number</label><br/>
+                    <input id="cashout-account-number" type="text" placeholder="Enter 11 digit Number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" /id="mobile-number"><br/>
+                </div>
+
+                <div class="mt-4">
+                    <label for="" class="font-medium text-[16px] text-[#080808]/70">Amount</label><br/>
+                    <input id="withdraw-amount" type="text" placeholder="Add Amount to withdraw" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" /id="mobile-number"><br/>
+                </div>
+                <div class="mt-4">
+                    <label for="" class="font-medium text-[16px] text-[#080808]/70">Pin Number</label><br/>
+                    <input id="cashout-pin" type="text" placeholder="Enter 4 digit pin number" class="input bg-[#f4f5f7] mt-3 rounded-3xl w-full" /id="mobile-number"><br/>
+                </div>
+                <button id="withdraw-btn" class="btn btn-active bg-[#0874F2] mt-5 w-full rounded-3xl text-white" id="login-btn">Withdraw Money</button>
+            </form>
+        </div>
+
     </div>
 
     <script src="./home.js"></script>
