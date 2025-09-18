@@ -22,13 +22,25 @@ function setInnerText(value){
 }
 
 //clear form
-function displayNone(id){
+function handleToggle(id){
     const forms = document.getElementsByClassName('form');
     for(const form of forms){
         form.style.display = 'none';
     }
+    document.getElementById(id).style.display = 'block';
 }
 
+//color Toggle
+function buttonToggle(id){
+    const formBtns = document.getElementsByClassName('form-btn');
+    console.log(formBtns);
+        for(const btn of formBtns){
+            btn.classList.remove("border-[#0874f2]",  "bg-[#0874f20d]");
+        }
+
+    document.getElementById(id).classList.remove("border-gray-400");
+    document.getElementById(id).classList.add("border-[#0874f2]",  "bg-[#0874f20d]")
+}
 
 // add money feature
 document.getElementById('add-money-btn').addEventListener('click', function(event){
@@ -96,25 +108,24 @@ document.getElementById('get-bonus').addEventListener('click', function(event){
 
 // add money
 document.getElementById('add-money').addEventListener('click', function(){
-    displayNone();
-    document.getElementById('add-money-parent').style.display = 'block';
+    handleToggle('add-money-parent');
+    buttonToggle('add-money');
 })
 
 // cashout
 document.getElementById('cashout-money').addEventListener('click', function(){
-    displayNone();
-    document.getElementById('cashout-parent').style.display = 'block';
-
+    handleToggle('cashout-parent');
+    buttonToggle('cashout-money');
 })
 
 // transfer money
 document.getElementById('transfer-money').addEventListener('click', function(){
-    displayNone();
-    document.getElementById('transfer-money-parent').style.display = 'block';
+    handleToggle('transfer-money-parent');
+    buttonToggle('transfer-money')
 })
 
 // get Bonous
 document.getElementById('get-bonus').addEventListener('click', function(){
-    displayNone();
-    document.getElementById('get-bonous-parent').style.display = 'block';
+    handleToggle('get-bonous-parent');
+    buttonToggle('get-bonus');
 })
