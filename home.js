@@ -1,5 +1,6 @@
 
 const pin = '1234';
+const transactionData = [];
 
 
 // Reusable function
@@ -61,8 +62,18 @@ document.getElementById('add-money-btn').addEventListener('click', function(even
         alert('please provide valid pin');
         return;
     }
+    if(addAmount <= 0){
+        alert('invalid amount. please change');
+        return;
+    }
     const totalAvailableBalance = availableBalance + addAmount;
     setInnerText(totalAvailableBalance);
+
+    const data = {
+        name: "Add Money",
+        date :new Date().toLocaleTimeString()
+    }
+    transactionData.push(data);
 })
 
 
@@ -86,8 +97,18 @@ document.getElementById('withdraw-btn').addEventListener('click', function(event
 
     // avilable
     const availableBalance = getInnerText('available-balance');
+    if(withdrawAmount > availableBalance || withdrawAmount<=0){
+        alert('Invalid amount');
+        return;
+    }
     const totalAvailableBalance = availableBalance - withdrawAmount;
     setInnerText(totalAvailableBalance)
+
+    const data = {
+        name: "Cashout Money",
+        date :new Date().toLocaleTimeString()
+    }
+    transactionData.push(data);
 })
 
 // transfer-money feature
@@ -98,6 +119,37 @@ document.getElementById('transfer-money').addEventListener('click', function(eve
 // get bonus feature
 document.getElementById('get-bonus').addEventListener('click', function(event){
     event.preventDefault();
+})
+
+// pay-bill feature
+document.getElementById('transfer-money').addEventListener('click', function(event){
+    event.preventDefault();
+})
+
+// transaction feature
+document.getElementById('transaction').addEventListener('click', function(event){
+    event.preventDefault();
+    const transactionContainer = document.getElementById('transaction-container')
+    transactionContainer.innerText = ""
+    for(const data of transactionData){
+        const div = document.createElement('div');
+        div.innerHTML = `
+             <div class="flex justify-between items-center h-[72px] shadow-md rounded-2xl p-4 bg-white mt-6">
+                <div class="p-3 rounded-full bg-[#f4f5f7]">
+                    <img src="./assets/wallet1.png" alt="">
+                </div>
+                <div>
+                    <h1>${data.name}</h1>
+                    <p>${data.date}</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+        `;
+
+        transactionContainer.appendChild(div)
+    }
 })
 
 
@@ -128,4 +180,16 @@ document.getElementById('transfer-money').addEventListener('click', function(){
 document.getElementById('get-bonus').addEventListener('click', function(){
     handleToggle('get-bonous-parent');
     buttonToggle('get-bonus');
+})
+
+// pay-bill
+document.getElementById('pay-bill').addEventListener('click', function(){
+    handleToggle('pay-bill-parent');
+    buttonToggle('pay-bill')
+})
+
+// transaction
+document.getElementById('transaction').addEventListener('click', function(){
+    handleToggle('transaction-parent');
+    buttonToggle('transaction');
 })
